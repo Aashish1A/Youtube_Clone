@@ -14,7 +14,7 @@ import tom from "../../assets/tom.png";
 import megan from "../../assets/megan.png";
 import cameron from "../../assets/cameron.png";
 
-const Sidebar = ({ sidebar }) => {
+const Sidebar = ({ sidebar, category, setCategory }) => {
   return (
     <div
       className={`bg-white h-screen fixed top-0 pl-[2%] pt-20 transition-all duration-300 ${
@@ -23,39 +23,39 @@ const Sidebar = ({ sidebar }) => {
     >
       {/* Shortcut Links */}
       <div className="">
-        <div className="flex items-center mb-5 w-fit flex-wrap cursor-pointer">
+        <div className={`flex items-center mb-5 w-fit flex-wrap cursor-pointer ${category===0?"active":""}`} onClick={()=>setCategory(0)}>
           <img src={home} alt="" className="w-5 mr-5" />
           <p>Home</p>
         </div>
-        <div className="flex items-center mb-5 w-fit flex-wrap cursor-pointer">
+        <div className={`flex items-center mb-5 w-fit flex-wrap cursor-pointer ${category===20?"active":""}`} onClick={()=>setCategory(20)}>
           <img src={gameIcon} alt="" className="w-5 mr-5" />
           <p>Gaming</p>
         </div>
-        <div className="flex items-center mb-5 w-fit flex-wrap cursor-pointer">
+        <div className={`flex items-center mb-5 w-fit flex-wrap cursor-pointer ${category===2?"active":""}`} onClick={()=>setCategory(2)}>
           <img src={automobiles} alt="" className="w-5 mr-5" />
           <p>Automobiles</p>
         </div>
-        <div className="flex items-center mb-5 w-fit flex-wrap cursor-pointer">
+        <div className={`flex items-center mb-5 w-fit flex-wrap cursor-pointer ${category===17?"active":""}`} onClick={()=>setCategory(17)}>
           <img src={sports} alt="" className="w-5 mr-5" />
           <p>Sports</p>
         </div>
-        <div className="flex items-center mb-5 w-fit flex-wrap cursor-pointer">
+        <div className={`flex items-center mb-5 w-fit flex-wrap cursor-pointer ${category===24?"active":""}`} onClick={()=>setCategory(24)}>
           <img src={entertainment} alt="" className="w-5 mr-5" />
           <p>Entertainment</p>
         </div>
-        <div className="flex items-center mb-5 w-fit flex-wrap cursor-pointer">
+        <div className={`flex items-center mb-5 w-fit flex-wrap cursor-pointer ${category===28?"active":""}`} onClick={()=>setCategory(28)}>
           <img src={tech} alt="" className="w-5 mr-5" />
           <p>Technology</p>
         </div>
-        <div className="flex items-center mb-5 w-fit flex-wrap cursor-pointer">
+        <div className={`flex items-center mb-5 w-fit flex-wrap cursor-pointer ${category===10?"active":""}`} onClick={()=>setCategory(10)}>
           <img src={music} alt="" className="w-5 mr-5" />
           <p>Music</p>
         </div>
-        <div className="flex items-center mb-5 w-fit flex-wrap cursor-pointer">
+        <div className={`flex items-center mb-5 w-fit flex-wrap cursor-pointer ${category===22?"active":""}`} onClick={()=>setCategory(22)}>
           <img src={blog} alt="" className="w-5 mr-5" />
           <p>Blogs</p>
         </div>
-        <div className="flex items-center mb-5 w-fit flex-wrap cursor-pointer">
+        <div className={`flex items-center mb-5 w-fit flex-wrap cursor-pointer ${category===25?"active":""}`} onClick={()=>setCategory(25)}>
           <img src={news} alt="" className="w-5 mr-5" />
           <p>News</p>
         </div>

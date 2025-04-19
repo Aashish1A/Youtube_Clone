@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "../../Components/SideBar/Sidebar";
 import Feed from "../../Components/Feed/Feed";
 
 const Home = ({ sidebar }) => {
+
+
+  const [category, setCategory] = useState(0)
+
   return (
     <div className="flex">
       {/* Sidebar */}
-      <Sidebar sidebar={sidebar} />
+      <Sidebar sidebar={sidebar} category={category} setCategory={setCategory} />
 
       {/* Feed */}
       <div
@@ -14,7 +18,7 @@ const Home = ({ sidebar }) => {
           sidebar ? "pl-[17%]" : "pl-[7%]"
         }`}
       >
-        <Feed />
+        <Feed category={category} />
       </div>
     </div>
   );
