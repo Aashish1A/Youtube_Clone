@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import thumbnail1 from "../../assets/thumbnail1.png"
 import thumbnail2 from "../../assets/thumbnail2.png"
 import thumbnail3 from "../../assets/thumbnail3.png"
@@ -8,7 +8,14 @@ import thumbnail6 from "../../assets/thumbnail6.png"
 import thumbnail7 from "../../assets/thumbnail7.png"
 import thumbnail8 from "../../assets/thumbnail8.png"
 
-const Recommended = () => {
+const Recommended = ({categoryId}) => {
+
+    const [apiData, setApiData] = useState([]);
+
+    const fetchedData = async () => {
+        const relatedVideoUrl = ``;
+    }
+
   return (
     <div className='basis-[30%]'>
         {/* Side video list */}

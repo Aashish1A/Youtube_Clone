@@ -10,7 +10,7 @@ const Video = () => {
   return (
     <div className='bg-[#f9f9f9] px-[2%] py-5 flex justify-between wrap'>
       <PlayVideo videoId={videoId} />
-      <Recommended />
+      <Recommended categoryId={categoryId} />
     </div>
   )
 }
