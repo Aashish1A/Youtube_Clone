@@ -22,7 +22,7 @@ const Sidebar = ({ sidebar, category, setCategory }) => {
       }`}
     >
       {/* Shortcut Links */}
-      <div className="">
+      <div className="hidden md:block">
         <div className={`flex items-center mb-5 w-fit flex-wrap cursor-pointer ${category===0?"active":""}`} onClick={()=>setCategory(0)}>
           <img src={home} alt="" className="w-5 mr-5" />
           <p>Home</p>
@@ -62,7 +62,7 @@ const Sidebar = ({ sidebar, category, setCategory }) => {
         <hr className="border-0 h-1 w-[85%] bg-gray-300" />
       </div>
       {/* Subscribed List */}
-      <div className="">
+      <div className="hidden md:block">
         <h3 className="text-[13px] my-5 mx-0 text-[#5a5a5a]">Subscribed</h3>
         <div className="flex items-center mb-5 w-fit flex-wrap cursor-pointer">
           <img src={aashish} alt="" className="w-6 h-6 rounded-full mr-5" />

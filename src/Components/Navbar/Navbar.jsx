@@ -13,21 +13,21 @@ const Navbar = ({setSidebar}) => {
     <nav className='flex-div py-2.5 px-[2%] justify-between shadow-md bg-white sticky top-0 z-10'>
       {/* Nav Left */}
       <div className="flex-div">
-        <img src={menuIcon} alt="menuIcon" className='w-5 mr-6' onClick={()=> setSidebar(prev=>prev===false?true:false)} />
-        <Link to='/'><img src={logo} alt="logo" className='w-32' /></Link>
+        <img src={menuIcon} alt="menuIcon" className='hidden md:block w-5 mr-6' onClick={()=> setSidebar(prev=>prev===false?true:false)} />
+        <Link to='/'><img src={logo} alt="logo" className='w-22 lg:w-32' /></Link>
       </div>
       {/* Nav Middle */}
       <div className="flex-div">
         <div className="flex-div border border-gray-300 rounded-3xl mr-4 py-2 px-3">
-        <input type="text" placeholder='search' className='outline-none w-sm px-2' />
+        <input type="text" placeholder='search' className='outline-none w-25 md:w-sm px-2' />
         <img src={searchIcon} alt="" className='w-4' />
         </div>
       </div>
       {/* Nav Right */}
       <div className="flex-div">
-        <img src={uploadIcon} alt="upload" className='w-6 mr-6' />
-        <img src={moreIcon} alt="more" className='w-6 mr-6' />
-        <img src={notificationIcon} alt="notification" className='w-6 mr-6' />
+        <img src={uploadIcon} alt="upload" className='hidden md:block w-6 mr-6' />
+        <img src={moreIcon} alt="more" className='hidden md:block w-6 mr-6' />
+        <img src={notificationIcon} alt="notification" className='hidden md:block w-6 mr-6' />
         <img src={profileIcon} alt="profile" className='w-9 h-9 mr-6 rounded-full' />
       </div>
     </nav>

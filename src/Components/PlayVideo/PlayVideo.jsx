@@ -4,12 +4,14 @@ import like from "../../assets/like.png";
 import dislike from "../../assets/dislike.png";
 import share from "../../assets/share.png";
 import save from "../../assets/save.png";
-import aashish from "../../assets/aashish.jpg";
-import user_profile from "../../assets/user_profile.jpg";
 import { API_KEY, valueConverter } from "../../data";
 import moment from "moment/moment";
+import { useParams } from "react-router-dom";
 
-const PlayVideo = ({ videoId }) => {
+const PlayVideo = () => {
+
+  const {videoId} = useParams();
+
   const [apiData, setApiData] = useState(null);
   const [channelData, setChannelData] = useState(null);
   const [commentData, setCommentData] = useState([]);
@@ -41,7 +43,7 @@ const PlayVideo = ({ videoId }) => {
 
   useEffect(() => {
     fetchedVideoData();
-  }, []);
+  }, [videoId]);
 
   useEffect(()=>{
     fetchOtherData();
@@ -52,12 +54,12 @@ const PlayVideo = ({ videoId }) => {
   }, [apiData])
  
   return (
-    <div className="basis-[69%]">
+    <div className="basis-full md:basis-[69%]">
 
       {/* <video src={video1} controls autoPlay muted  className='w-full' ></video> */}
 
       <iframe
-        className="w-full h-[37vw]"
+        className="w-full h-[50vw] md:h-[37vw]"
         src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -72,19 +74,19 @@ const PlayVideo = ({ videoId }) => {
       <div className="flex items-center justify-between wrap mt-2.5 text-[14px] text-[#5a5a5a]">
         <p>{valueConverter(apiData?apiData.statistics.viewCount: "15k")}views &bull; {moment(apiData?apiData.snippet.publishedAt: "2 days ago").fromNow()}</p>
         <div className="flex">
-          <span className="inline-flex items-center ml-4">
+          <span className="inline-flex items-center mr-4 mt-4 md:mr-0 md:mt-0 md:ml-4">
             <img src={like} alt="" className="w-5 mr-2" />
             {valueConverter(apiData?apiData.statistics.likeCount: "1k")}
           </span>
-          <span className="inline-flex items-center ml-4">
+          <span className="inline-flex items-center mr-4 mt-4 md:mr-0 md:mt-0 md:ml-4">
             <img src={dislike} alt="" className="w-5 mr-2" />
             {valueConverter(apiData?apiData.statistics.dislikeCount: "120")}
           </span>
-          <span className="inline-flex items-center ml-4">
+          <span className="inline-flex items-center mr-4 mt-4 md:mr-0 md:mt-0 md:ml-4">
             <img src={share} alt="" className="w-5 mr-2" />
             Share
           </span>
-          <span className="inline-flex items-center ml-4">
+          <span className="inline-flex items-center mr-4 mt-4 md:mr-0 md:mt-0 md:ml-4">
             <img src={save} alt="" className="w-5 mr-2" />
             Save
           </span>
@@ -105,7 +107,7 @@ const PlayVideo = ({ videoId }) => {
         </button>
       </div>
 
-      <div className="pl-11 my-4 mx-0">
+      <div className="md:pl-11 my-4 mx-0">
         <p className="text-[14px] mb-1 text-[#5a5a5a]">
           {apiData?apiData.snippet.description.slice(0,250): "Best Video"}
         </p>

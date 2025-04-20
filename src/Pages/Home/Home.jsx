@@ -14,8 +14,8 @@ const Home = ({ sidebar }) => {
 
       {/* Feed */}
       <div
-        className={`bg-[#f9f9f9] flex-1 transition-all duration-300 pr-[2%] pt-5 pb-5 ${
-          sidebar ? "pl-[17%]" : "pl-[7%]"
+        className={`bg-[#f9f9f9] flex-1 transition-all duration-300 pr-[5%] md:pr-[2%] pt-5 pb-5 ${
+          sidebar ? "pl-[17%]" : "pl-[5%] md:pl-[7%]"
         }`}
       >
         <Feed category={category} />

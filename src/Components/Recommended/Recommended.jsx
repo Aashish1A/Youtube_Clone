@@ -1,95 +1,36 @@
-import React, { useState } from 'react'
-import thumbnail1 from "../../assets/thumbnail1.png"
-import thumbnail2 from "../../assets/thumbnail2.png"
-import thumbnail3 from "../../assets/thumbnail3.png"
-import thumbnail4 from "../../assets/thumbnail4.png"
-import thumbnail5 from "../../assets/thumbnail5.png"
-import thumbnail6 from "../../assets/thumbnail6.png"
-import thumbnail7 from "../../assets/thumbnail7.png"
-import thumbnail8 from "../../assets/thumbnail8.png"
+import React, { useEffect, useState } from 'react'
+import { API_KEY, valueConverter } from '../../data'
+import { Link } from 'react-router-dom';
 
 const Recommended = ({categoryId}) => {
 
     const [apiData, setApiData] = useState([]);
 
     const fetchedData = async () => {
-        const relatedVideoUrl = ``;
+        const relatedVideoUrl = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=40&regionCode=IN&videoCategoryId=${categoryId}&key=${API_KEY}`;
+        await fetch(relatedVideoUrl)
+        .then(res => res.json())
+        .then(data => setApiData(data.items))
     }
 
+    useEffect(()=>{
+        fetchedData();
+    }, [])
+
   return (
-    <div className='basis-[30%]'>
-        {/* Side video list */}
-        <div className="flex justify-between mb-2">
-            <img src={thumbnail1} alt="" className='basis-[49%] w-1/2' />
-            <div className="basis-[49%]">
-                <h4 className='text-[13px] mb-1.5'>Best channel that helps you tu be a developer</h4>
-                <p>CodeWithAashish</p>
-                <p>200k Views</p>
-            </div>
-        </div>
-        
-        <div className="flex justify-between mb-2">
-            <img src={thumbnail2} alt="" className='basis-[49%] w-1/2' />
-            <div className="basis-[49%]">
-                <h4 className='text-[13px] mb-1.5'>Best channel that helps you tu be a developer</h4>
-                <p>CodeWithAashish</p>
-                <p>200k Views</p>
-            </div>
-        </div>
-
-        <div className="flex justify-between mb-2">
-            <img src={thumbnail3} alt="" className='basis-[49%] w-1/2' />
-            <div className="basis-[49%]">
-                <h4 className='text-[13px] mb-1.5'>Best channel that helps you tu be a developer</h4>
-                <p>CodeWithAashish</p>
-                <p>200k Views</p>
-            </div>
-        </div>
-
-        <div className="flex justify-between mb-2">
-            <img src={thumbnail4} alt="" className='basis-[49%] w-1/2' />
-            <div className="basis-[49%]">
-                <h4 className='text-[13px] mb-1.5'>Best channel that helps you tu be a developer</h4>
-                <p>CodeWithAashish</p>
-                <p>200k Views</p>
-            </div>
-        </div>
-
-        <div className="flex justify-between mb-2">
-            <img src={thumbnail5} alt="" className='basis-[49%] w-1/2' />
-            <div className="basis-[49%]">
-                <h4 className='text-[13px] mb-1.5'>Best channel that helps you tu be a developer</h4>
-                <p>CodeWithAashish</p>
-                <p>200k Views</p>
-            </div>
-        </div>
-
-        <div className="flex justify-between mb-2">
-            <img src={thumbnail6} alt="" className='basis-[49%] w-1/2' />
-            <div className="basis-[49%]">
-                <h4 className='text-[13px] mb-1.5'>Best channel that helps you tu be a developer</h4>
-                <p>CodeWithAashish</p>
-                <p>200k Views</p>
-            </div>
-        </div>
-
-        <div className="flex justify-between mb-2">
-            <img src={thumbnail7} alt="" className='basis-[49%] w-1/2' />
-            <div className="basis-[49%]">
-                <h4 className='text-[13px] mb-1.5'>Best channel that helps you tu be a developer</h4>
-                <p>CodeWithAashish</p>
-                <p>200k Views</p>
-            </div>
-        </div>
-
-        <div className="flex justify-between mb-2">
-            <img src={thumbnail8} alt="" className='basis-[49%] w-1/2' />
-            <div className="basis-[49%]">
-                <h4 className='text-[13px] mb-1.5'>Best channel that helps you tu be a developer</h4>
-                <p>CodeWithAashish</p>
-                <p>200k Views</p>
-            </div>
-        </div>
+    <div className='hidden md:block basis-[30%]'>
+        {apiData.map((item, index)=> {
+           return (
+            <Link to={`/video/${item.snippet.categoryId}/${item.id}`} key={index} className="flex justify-between mb-2">
+                <img src={item.snippet.thumbnails.medium.url} alt="" className='basis-[49%] w-1/2' />
+                <div className="basis-[49%]">
+                    <h4 className='text-[13px] mb-1.5'>{item.snippet.title}</h4>
+                    <p>{item.snippet.channelTitle}</p>
+                    <p>{valueConverter(item.statistics.viewCount)} views</p>
+                </div>
+            </Link>
+           )
+        })}
 
     </div>
   )

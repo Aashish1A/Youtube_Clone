@@ -8,7 +8,7 @@ const Video = () => {
   const {videoId, categoryId} = useParams();
 
   return (
-    <div className='bg-[#f9f9f9] px-[2%] py-5 flex justify-between wrap'>
+    <div className='bg-[#f9f9f9] px-[5%] md:px-[2%] py-5 flex justify-between wrap'>
       <PlayVideo videoId={videoId} />
       <Recommended categoryId={categoryId} />
     </div>
